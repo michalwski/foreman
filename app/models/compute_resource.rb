@@ -3,7 +3,7 @@ class ComputeResource < ActiveRecord::Base
   include Taxonomix
   include Encryptable
   encrypts :password
-  PROVIDERS = %w[ Libvirt Ovirt EC2 Vmware Openstack Rackspace GCE].delete_if{|p| p == "Libvirt" && !SETTINGS[:libvirt]}
+  PROVIDERS = %w[ Libvirt Ovirt EC2 Vmware Openstack Rackspace GCE Xenserver].delete_if{|p| p == "Libvirt" && !SETTINGS[:libvirt]}
   audited :except => [:password, :attrs], :allow_mass_assignment => true
   serialize :attrs, Hash
   has_many :trends, :as => :trendable, :class_name => "ForemanTrend"
